@@ -12,3 +12,7 @@ npm run dev # server dev
 ## Contributors
 
 * Ibán Domínguez
+
+## License
+
+MIT
