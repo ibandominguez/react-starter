@@ -20,6 +20,13 @@ module.exports = {
     }, {
       test: /\.(png|jpg|gif|svg|woff|svg|ttf|eot)$/,
       loader: 'url?limit=30000&name=[name]-[hash].[ext]'
+    }, {
+        test: /\.woff($|\?)|\.woff2($|\?)|\.ttf($|\?)|\.eot($|\?)|\.svg($|\?)/,
+        loader: 'url-loader'
+    }, {
+      test: /\.less$/,
+      exclude: '/node_modules',
+      loader: 'style!css!less'
     }]
   },
   plugins: [

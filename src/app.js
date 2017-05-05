@@ -6,6 +6,8 @@ import { Router, Route, hashHistory } from 'react-router'
 import TestContainer from './containers/TestContainer'
 import reducer from './reducer'
 
+import './app.less'
+
 const store = createStore(reducer)
 
 class App extends Component {
