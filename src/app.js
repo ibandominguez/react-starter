@@ -5,21 +5,15 @@ import { Provider } from 'react-redux'
 import { Router, Route, hashHistory } from 'react-router'
 import TestContainer from './containers/TestContainer'
 import reducer from './reducer'
-
-import './app.less'
+import './styles/app.less'
 
 const store = createStore(reducer)
 
-class App extends Component {
-  render() {
-    return (
-      <Provider store={store}>
-        <Router history={hashHistory}>
-          <Route path='/' component={TestContainer} />
-        </Router>
-      </Provider>
-    )
-  }
-}
-
-ReactDOM.render(<App />, document.getElementById('app'))
+ReactDOM.render(
+  <Provider store={store}>
+    <Router history={hashHistory}>
+      <Route path='/' component={TestContainer} />
+    </Router>
+  </Provider>,
+  document.getElementById('app')
+)
