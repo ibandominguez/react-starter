@@ -2,7 +2,7 @@
   "name": "react-starter",
   "main": "src/app.js",
   "scripts": {
-    "dev": "NODE_ENV=development webpack-dev-server --devtool eval --progress --hide-modules --colors --hot --inline",
+    "dev": "NODE_ENV=development webpack-dev-server --progress --hide-modules --colors --hot --inline",
     "build": "NODE_ENV=production webpack --progress --hide-modules"
   },
   "devDependencies": {

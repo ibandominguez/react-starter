@@ -11,12 +11,12 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'build'),
     publicPath: '/',
-    filename: 'scripts/app.min.js',
+    filename: 'scripts/app.min-[hash  ].js',
   },
   module: {
     loaders: [
       { test: /\.js?$/, exclude: /node_modules/, loader: 'babel' },
-      { test: /\.(png|jpg|gif)$/, loader: 'url?limit=30000&name=images/[name].[ext]' },
+      { test: /\.(png|jpg|gif)$/, loader: 'file-loader?name=images/[name].[ext]' },
       { test: /\.(woff|svg|ttf|eot)$/, loader: 'url?limit=30000&name=fonts/[name].[ext]' },
       { test: /\.(pdf|doc)$/, loader: 'url?limit=30000&name=documents/[name].[ext]' },
       { test: /\.woff($|\?)|\.woff2($|\?)|\.ttf($|\?)|\.eot($|\?)|\.svg($|\?)/, loader: 'url-loader' },
@@ -25,9 +25,7 @@ module.exports = {
   },
   plugins: [
     new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: JSON.stringify('production')
-      }
+      'process.env': { NODE_ENV: JSON.stringify('production') }
     }),
     new webpack.optimize.UglifyJsPlugin({
       compress: { warnings: false }
