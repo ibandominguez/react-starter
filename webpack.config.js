@@ -19,8 +19,7 @@ module.exports = {
       { test: /\.(png|jpg|gif)$/, loader: 'file-loader?name=images/[name].[ext]' },
       { test: /\.(woff|svg|ttf|eot)$/, loader: 'url?limit=30000&name=fonts/[name].[ext]' },
       { test: /\.(pdf|doc)$/, loader: 'url?limit=30000&name=documents/[name].[ext]' },
-      { test: /\.woff($|\?)|\.woff2($|\?)|\.ttf($|\?)|\.eot($|\?)|\.svg($|\?)/, loader: 'url-loader' },
-      { test: /\.less$/, exclude: '/node_modules', loader: 'style!css!less' }
+      { test: /\.woff($|\?)|\.woff2($|\?)|\.ttf($|\?)|\.eot($|\?)|\.svg($|\?)/, loader: 'url-loader' }
     ]
   },
   plugins: [
