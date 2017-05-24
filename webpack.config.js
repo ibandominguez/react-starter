@@ -47,11 +47,15 @@ module.exports = {
       baseHref: '/',
       googleAnalytics: { trackingId: 'UA-XXXX-XX', pageViewOnLoad: true },
       meta: [],
-      links: [],
+      links: [
+        { rel: 'icon', href: 'images/favicon.ico', type: 'image/x-icon' }
+      ],
       window: { env: {} }
     }),
     new WebpackOnBuildPlugin((stats) => {
-      fs.existsSync('./build') && fs.writeFileSync('./build/.htaccess', [
+      fs.createReadStream('./src/images/favicon.ico').pipe(fs.createWriteStream('./build/images/favicon.ico'))
+
+      fs.writeFileSync('./build/.htaccess', [
         '<ifModule mod_rewrite.c>',
         'RewriteEngine On',
         'RewriteCond %{REQUEST_FILENAME} !-f',
