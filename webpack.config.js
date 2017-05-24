@@ -15,11 +15,10 @@ module.exports = {
   },
   module: {
     loaders: [
-      { test: /\.js?$/, exclude: /node_modules/, loader: 'babel' },
+      { test: /\.(js|jsx)$/, exclude: /node_modules/, loader: 'babel' },
       { test: /\.(png|jpg|gif)$/, loader: 'file-loader?name=images/[name].[ext]' },
-      { test: /\.(woff|svg|ttf|eot)$/, loader: 'url?limit=30000&name=fonts/[name].[ext]' },
-      { test: /\.(pdf|doc)$/, loader: 'url?limit=30000&name=documents/[name].[ext]' },
-      { test: /\.woff($|\?)|\.woff2($|\?)|\.ttf($|\?)|\.eot($|\?)|\.svg($|\?)/, loader: 'url-loader' }
+      { test: /\.(pdf|doc)$/, loader: 'file-loader?limit=30000&name=documents/[name].[ext]' },
+      { test: /\.(woff|woff2|svg|ttf|eot)$/, loader: 'file-loader?limit=30000&name=fonts/[name].[ext]' }
     ]
   },
   plugins: [
@@ -33,8 +32,8 @@ module.exports = {
       title: 'React Starter',
       template: require('html-webpack-template'),
       appMountId: 'app',
-      // baseHref: '/',
-      // googleAnalytics: { trackingId: 'UA-XXXX-XX', pageViewOnLoad: true },
+      baseHref: '/',
+      googleAnalytics: { trackingId: 'UA-XXXX-XX', pageViewOnLoad: true },
       meta: [
         { charset: 'utf-8' },
         { 'http-equiv': 'X-UA-Compatible', content: 'IE=edge' },

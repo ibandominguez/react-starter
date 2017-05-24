@@ -5,7 +5,7 @@ export default class TestComponent extends Component {
     return (
       <div>
         <h3>TestComponent</h3>
-        <img src="images/test.png" />
+        <img src={require('../images/test.png')} />
       </div>
     )
   }
