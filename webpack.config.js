@@ -30,15 +30,23 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       title: 'React Starter',
+      inject: false,
+      mobile: true,
+      minify: {
+        removeComments: true,
+        collapseWhitespace: true,
+        collapseBooleanAttributes: true,
+        removeEmptyAttributes: true,
+        minifyJS: true,
+        minifyCSS: true
+      },
       template: require('html-webpack-template'),
       appMountId: 'app',
       baseHref: '/',
       googleAnalytics: { trackingId: 'UA-XXXX-XX', pageViewOnLoad: true },
-      meta: [
-        { charset: 'utf-8' },
-        { 'http-equiv': 'X-UA-Compatible', content: 'IE=edge' },
-        { name: 'viewport', content: 'width=device-width, initial-scale=1' }
-      ]
+      meta: [],
+      links: [],
+      window: { env: {} }
     })
   ]
 }
