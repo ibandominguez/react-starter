@@ -1,8 +1,10 @@
 'use strict'
 
+const fs = require('fs')
 const path = require('path')
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const WebpackOnBuildPlugin = require('on-build-webpack')
 
 module.exports = {
   entry: {
@@ -47,6 +49,16 @@ module.exports = {
       meta: [],
       links: [],
       window: { env: {} }
+    }),
+    new WebpackOnBuildPlugin((stats) => {
+      fs.existsSync('./build') && fs.writeFileSync('./build/.htaccess', [
+        '<ifModule mod_rewrite.c>',
+        'RewriteEngine On',
+        'RewriteCond %{REQUEST_FILENAME} !-f',
+        'RewriteCond %{REQUEST_FILENAME} !-d',
+        'RewriteRule (.*) index.html [QA,L]',
+        '</ifModule>',
+      ].join('\n'))
     })
   ]
 }
