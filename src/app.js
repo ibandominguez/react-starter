@@ -5,7 +5,6 @@ import { Provider } from 'react-redux'
 import { Router, Route, hashHistory } from 'react-router'
 import TestContainer from './containers/TestContainer'
 import reducer from './reducer'
-import './styles/app.less'
 
 const store = createStore(reducer)
 

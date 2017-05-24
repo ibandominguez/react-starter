@@ -11,7 +11,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'build'),
     publicPath: '/',
-    filename: 'scripts/app.min-[hash  ].js',
+    filename: 'scripts/app.min-[hash].js'
   },
   module: {
     loaders: [
