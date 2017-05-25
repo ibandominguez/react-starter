@@ -3,7 +3,10 @@ import React, { Component } from 'react'
 export default class TestComponent extends Component {
   render() {
     return (
-      <h3>TestComponent</h3>
+      <div>
+        <h3>TestComponent</h3>
+        <img src={require('../images/test.png')} />
+      </div>
     )
   }
 }

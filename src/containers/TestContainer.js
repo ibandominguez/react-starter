@@ -5,7 +5,7 @@ import TestComponent from '../components/TestComponent'
 class TestContainer extends Component {
   render() {
     return (
-      <div>
+      <div className='container'>
         <h2>Test Container</h2>
         <TestComponent />
 
