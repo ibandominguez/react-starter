@@ -1,12 +1,11 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
-import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 import { Router, Route, hashHistory } from 'react-router'
+import configureStore from './store/configure'
 import TestContainer from './containers/TestContainer'
-import reducer from './reducer'
 
-const store = createStore(reducer)
+const store = configureStore()
 
 ReactDOM.render(
   <Provider store={store}>
