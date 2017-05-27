@@ -5,6 +5,7 @@ const path = require('path')
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const WebpackOnBuildPlugin = require('on-build-webpack')
+const ifProduction = (func) => process.env.NODE_ENV === 'production' ? func : () => {}
 
 module.exports = {
   entry: {
@@ -13,7 +14,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'build'),
     publicPath: '/',
-    filename: 'scripts/app.min-[hash].js'
+    filename: 'scripts/[hash].js'
   },
   module: {
     loaders: [
@@ -24,12 +25,6 @@ module.exports = {
     ]
   },
   plugins: [
-    new webpack.DefinePlugin({
-      'process.env': { NODE_ENV: JSON.stringify('production') }
-    }),
-    new webpack.optimize.UglifyJsPlugin({
-      compress: { warnings: false }
-    }),
     new HtmlWebpackPlugin({
       title: 'React Starter',
       inject: false,
@@ -52,7 +47,13 @@ module.exports = {
       ],
       window: { env: {} }
     }),
-    new WebpackOnBuildPlugin((stats) => {
+    ifProduction(new webpack.DefinePlugin({
+      'process.env': { NODE_ENV: JSON.stringify('production') }
+    })),
+    ifProduction(new webpack.optimize.UglifyJsPlugin({
+      compress: { warnings: false }
+    })),
+    ifProduction(new WebpackOnBuildPlugin((stats) => {
       fs.createReadStream('./src/images/favicon.ico').pipe(fs.createWriteStream('./build/images/favicon.ico'))
 
       fs.writeFileSync('./build/.htaccess', [
@@ -63,6 +64,6 @@ module.exports = {
         'RewriteRule (.*) index.html [QA,L]',
         '</ifModule>',
       ].join('\n'))
-    })
+    }))
   ]
 }
