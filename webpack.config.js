@@ -18,7 +18,7 @@ module.exports = {
   },
   module: {
     loaders: [
-      { test: /\.(js|jsx)$/, exclude: /node_modules/, loader: 'babel' },
+      { test: /\.(js|jsx)$/, exclude: /node_modules/, loader: 'babel-loader' },
       { test: /\.(png|jpg|gif)$/, loader: 'file-loader?name=images/[name].[ext]' },
       { test: /\.(pdf|doc)$/, loader: 'file-loader?limit=30000&name=documents/[name].[ext]' },
       { test: /\.(woff|woff2|svg|ttf|eot)$/, loader: 'file-loader?limit=30000&name=fonts/[name].[ext]' }
