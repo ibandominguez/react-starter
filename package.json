@@ -6,6 +6,12 @@
     "build": "NODE_ENV=production webpack --progress --hide-modules",
     "test": "jest tests"
   },
+  "jest": {
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/tests/__mocks__/file.js",
+      "\\.(css|less)$": "<rootDir>/tests/__mocks__/style.js"
+    }
+  },
   "devDependencies": {
     "babel-core": "^6.24.1",
     "babel-jest": "^20.0.3",
