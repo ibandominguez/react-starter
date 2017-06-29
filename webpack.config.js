@@ -18,6 +18,7 @@ module.exports = {
   },
   module: {
     loaders: [
+      { test: /\.css$/, loaders: ['style-loader', 'css-loader'] },
       { test: /\.(js|jsx)$/, exclude: /node_modules/, loader: 'babel-loader' },
       { test: /\.(png|jpg|gif)$/, loader: 'file-loader?name=images/[name].[ext]' },
       { test: /\.(pdf|doc)$/, loader: 'file-loader?limit=30000&name=documents/[name].[ext]' },
