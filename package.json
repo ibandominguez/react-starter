@@ -35,12 +35,14 @@
     "webpack-dev-server": "^1.12.0"
   },
   "dependencies": {
+    "bootstrap": "^3.3.7",
+    "history": "^4.6.3",
     "prop-types": "^15.5.10",
     "react": "^15.2.1",
+    "react-bootstrap": "^0.31.2",
     "react-dom": "^15.5.4",
     "react-redux": "^5.0.4",
     "react-router": "^4.1.1",
-    "history": "^4.6.3",
     "react-router-dom": "^4.1.1",
     "react-router-redux": "^5.0.0-alpha.6",
     "redux": "^3.6.0",
