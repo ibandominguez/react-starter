@@ -44,7 +44,8 @@ module.exports = {
       googleAnalytics: { trackingId: 'UA-XXXX-XX', pageViewOnLoad: true },
       meta: [],
       links: [
-        { rel: 'icon', href: 'images/favicon.ico', type: 'image/x-icon' }
+        { rel: 'icon', href: 'images/favicon.ico', type: 'image/x-icon' },
+        { rel: 'stylesheet', href: '../node_modules/bootstrap/dist/css/bootstrap.min.css' }
       ],
       window: { env: {} }
     }),

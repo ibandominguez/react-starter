@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import { Grid, Row, Col, FormGroup, FormControl, ControlLabel, Button} from 'react-bootstrap'
 
 export default class AddCard extends Component {
   static get propTypes() {
@@ -18,7 +19,7 @@ export default class AddCard extends Component {
 
   constructor(props) {
     super(props)
-    this.state = { title: null }
+    this.state = { title: '' }
   }
 
   handleInputChange(event) {
@@ -33,12 +34,22 @@ export default class AddCard extends Component {
   render() {
     return (
       <form onSubmit={this.handleFormSubmit.bind(this)}>
-        <select required name={'color'} onChange={this.handleInputChange.bind(this)}>
-          <option value={''}>Select a color:</option>
-          {AddCard.colors.map((color, index) => <option key={index} value={color}>{color}</option>)}
-        </select>
-        <input required placeholder={'Title'} type={'text'} name={'title'} onChange={this.handleInputChange.bind(this)} />
-        <input type={'submit'} />
+        <FormGroup controlId="colorSelect">
+          <FormControl componentClass="select" placeholder="select" required name={'color'} onChange={this.handleInputChange.bind(this)}>
+            <option value={''}>Select a color:</option>
+            {AddCard.colors.map((color, index) => <option key={index} value={color}>{color}</option>)}
+          </FormControl>
+        </FormGroup>
+      <FormGroup controlId="return">
+        <FormControl
+            type="text"
+            value={this.state.title}
+            name={'title'}
+            placeholder="Enter text"
+            onChange={this.handleInputChange.bind(this)}
+          />
+          <Button style={{ marginTop: 10 }} type={'submit'} bsStyle="primary">Add</Button>
+      </FormGroup>
       </form>
     )
   }
