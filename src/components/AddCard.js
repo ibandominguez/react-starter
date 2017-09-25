@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { Grid, Row, Col, FormGroup, FormControl, ControlLabel, Button} from 'react-bootstrap'
+import Radium from 'radium'
+import { Grid, Row, Col, FormGroup, FormControl, ControlLabel, Button } from 'react-bootstrap'
 
-export default class AddCard extends Component {
+class AddCard extends Component {
   static get propTypes() {
     return {
       onAdd: PropTypes.func.isRequired
@@ -54,3 +55,5 @@ export default class AddCard extends Component {
     )
   }
 }
+
+export default Radium(AddCard)
