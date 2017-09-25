@@ -43,10 +43,7 @@ module.exports = {
       baseHref: '/',
       googleAnalytics: { trackingId: 'UA-XXXX-XX', pageViewOnLoad: true },
       meta: [],
-      links: [
-        { rel: 'icon', href: 'images/favicon.ico', type: 'image/x-icon' },
-        { rel: 'stylesheet', href: '../node_modules/bootstrap/dist/css/bootstrap.min.css' }
-      ],
+      links: [],
       window: { env: {} }
     }),
     ifProduction(new webpack.DefinePlugin({
@@ -54,18 +51,6 @@ module.exports = {
     })),
     ifProduction(new webpack.optimize.UglifyJsPlugin({
       compress: { warnings: false }
-    })),
-    ifProduction(new WebpackOnBuildPlugin((stats) => {
-      fs.createReadStream('./src/images/favicon.ico').pipe(fs.createWriteStream('./build/images/favicon.ico'))
-
-      fs.writeFileSync('./build/.htaccess', [
-        '<ifModule mod_rewrite.c>',
-        'RewriteEngine On',
-        'RewriteCond %{REQUEST_FILENAME} !-f',
-        'RewriteCond %{REQUEST_FILENAME} !-d',
-        'RewriteRule (.*) index.html [QA,L]',
-        '</ifModule>',
-      ].join('\n'))
     }))
   ]
 }
