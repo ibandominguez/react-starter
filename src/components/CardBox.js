@@ -4,9 +4,14 @@ import Radium from 'radium'
 
 const styles = {
   container: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
     padding: '20px',
     color: '#555',
     backgroundColor: '#eee',
+    width: 50,
+    height: 50,
     margin: '5px',
     ':hover': {
       opacity: 0.5
