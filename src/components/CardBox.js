@@ -1,16 +1,25 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import Radium from 'radium'
 
 const styles = {
   container: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
     padding: '20px',
     color: '#555',
     backgroundColor: '#eee',
-    margin: '5px'
+    width: 50,
+    height: 50,
+    margin: '5px',
+    ':hover': {
+      opacity: 0.5
+    }
   }
 }
 
-export default class CardBox extends Component {
+class CardBox extends Component {
   static get propTypes() {
     return {
       title: PropTypes.string.isRequired,
@@ -40,3 +49,5 @@ export default class CardBox extends Component {
     )
   }
 }
+
+export default Radium(CardBox)
