@@ -13,13 +13,14 @@ const styles = {
     width: 50,
     height: 50,
     margin: '5px',
+    cursor: 'pointer',
     ':hover': {
       opacity: 0.5
     }
   }
 }
 
-class CardBox extends Component {
+class MyComponent extends Component {
   static get propTypes() {
     return {
       title: PropTypes.string.isRequired,
@@ -37,7 +38,6 @@ class CardBox extends Component {
 
   handleOnClick() {
     const { title, color } = this.props
-
     this.props.onClick({ title, color })
   }
 
@@ -50,4 +50,4 @@ class CardBox extends Component {
   }
 }
 
-export default Radium(CardBox)
+export default Radium(MyComponent)
