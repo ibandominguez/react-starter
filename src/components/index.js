@@ -1,2 +1,1 @@
-export { default as CardBox } from './CardBox'
-export { default as AddCard } from './AddCard'
+export { default as MyComponent } from './MyComponent'
