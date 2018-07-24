@@ -1,25 +1,19 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
+import { createStore, combineReducers, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
-import { Route, Switch } from 'react-router-dom'
-import { ConnectedRouter, routerMiddleware } from 'react-router-redux'
-import createHistory from 'history/createBrowserHistory'
-import { Home, NotFound } from './containers'
-import configureStore from './store/configure'
+import thunk from 'redux-thunk'
+import { MyContainer } from './containers'
+import * as reducers from './reducers'
 
-const store = configureStore()
-const history = createHistory()
+const store = createStore(
+  combineReducers({ ...reducers }),
+  applyMiddleware(thunk)
+)
 
 ReactDOM.render(
   <Provider store={store}>
-    <ConnectedRouter history={history}>
-      <div>
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route component={NotFound} />
-        </Switch>
-      </div>
-    </ConnectedRouter>
+    <MyContainer />
   </Provider>,
   document.getElementById('app')
 )
