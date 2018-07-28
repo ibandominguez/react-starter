@@ -25,17 +25,7 @@ module.exports = {
       }
     ]
   },
-  optimization: {
-    splitChunks: {
-      cacheGroups: {
-        commons: {
-          test: /[\\/]node_modules[\\/]/,
-          name: 'vendor',
-          chunks: 'all'
-        }
-      }
-    }
-  },
+  optimization: {},
   plugins: [
     new HtmlWebpackPlugin({
       title: 'React Starter',
