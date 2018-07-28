@@ -17,7 +17,6 @@ module.exports = {
   },
   module: {
     rules: [
-      { test: /\.css$/, loaders: ['style-loader', 'css-loader'] },
       { test: /\.(js|jsx)$/, exclude: /node_modules/, loader: 'babel-loader' },
       {
         test: /\.(png|jpg|gif|pdf|doc|woff|woff2|svg|ttf|eot)$/,
@@ -30,24 +29,10 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin('build', {}),
     new HtmlWebpackPlugin({
-      title: 'React Starter',
       inject: false,
-      mobile: true,
-      minify: {
-        removeComments: true,
-        collapseWhitespace: true,
-        collapseBooleanAttributes: true,
-        removeEmptyAttributes: true,
-        minifyJS: true,
-        minifyCSS: true
-      },
-      template: require('html-webpack-template'),
-      appMountId: 'app',
-      baseHref: '/',
-      googleAnalytics: { trackingId: 'UA-XXXX-XX', pageViewOnLoad: true },
-      meta: [],
-      links: [],
-      window: { env: {} }
+      hash: true,
+      template: './src/index.html',
+      filename: 'index.html'
     })
   ]
 }
