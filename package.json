@@ -2,7 +2,7 @@
   "name": "react-starter",
   "main": "src/app.js",
   "scripts": {
-    "dev": "webpack-dev-server --mode development --progress --hide-modules --colors --hot --inline --history-api-fallback",
+    "dev": "webpack-dev-server --mode development --progress --hide-modules --colors --hot --inline --history-api-fallback --open",
     "build": "webpack --mode production --progress --hide-modules",
     "test": "jest tests"
   },
