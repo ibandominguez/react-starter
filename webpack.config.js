@@ -4,7 +4,6 @@ const fs = require('fs')
 const path = require('path')
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const ifProduction = (func) => process.env.NODE_ENV === 'production' ? func : () => {}
 
 module.exports = {
   entry: {
@@ -19,9 +18,11 @@ module.exports = {
     rules: [
       { test: /\.css$/, loaders: ['style-loader', 'css-loader'] },
       { test: /\.(js|jsx)$/, exclude: /node_modules/, loader: 'babel-loader' },
-      { test: /\.(png|jpg|gif)$/, loader: 'file-loader?name=images/[name].[ext]' },
-      { test: /\.(pdf|doc)$/, loader: 'file-loader?limit=30000&name=documents/[name].[ext]' },
-      { test: /\.(woff|woff2|svg|ttf|eot)$/, loader: 'file-loader?limit=30000&name=fonts/[name].[ext]' }
+      {
+        test: /\.(png|jpg|gif|pdf|doc|woff|woff2|svg|ttf|eot)$/,
+        loader: 'file-loader',
+        options: { outputPath: 'assets/' }
+      }
     ]
   },
   optimization: {
