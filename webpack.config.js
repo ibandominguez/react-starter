@@ -4,57 +4,35 @@ const fs = require('fs')
 const path = require('path')
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const ifProduction = (func) => process.env.NODE_ENV === 'production' ? func : () => {}
+const CleanWebpackPlugin = require('clean-webpack-plugin')
 
 module.exports = {
   entry: {
-    main: './src/app.js'
+    main: './src/index.js'
   },
   output: {
     path: path.resolve(__dirname, 'build'),
     publicPath: '/',
-    filename: 'scripts/[hash].js'
+    filename: 'scripts/[hash].min.js'
   },
   module: {
     rules: [
-      { test: /\.css$/, loaders: ['style-loader', 'css-loader'] },
       { test: /\.(js|jsx)$/, exclude: /node_modules/, loader: 'babel-loader' },
-      { test: /\.(png|jpg|gif)$/, loader: 'file-loader?name=images/[name].[ext]' },
-      { test: /\.(pdf|doc)$/, loader: 'file-loader?limit=30000&name=documents/[name].[ext]' },
-      { test: /\.(woff|woff2|svg|ttf|eot)$/, loader: 'file-loader?limit=30000&name=fonts/[name].[ext]' }
+      {
+        test: /\.(png|jpg|gif|pdf|doc|woff|woff2|svg|ttf|eot)$/,
+        loader: 'file-loader',
+        options: { outputPath: 'assets/' }
+      }
     ]
   },
-  optimization: {
-    splitChunks: {
-      cacheGroups: {
-        commons: {
-          test: /[\\/]node_modules[\\/]/,
-          name: 'vendor',
-          chunks: 'all'
-        }
-      }
-    }
-  },
+  optimization: {},
   plugins: [
+    new CleanWebpackPlugin('build', {}),
     new HtmlWebpackPlugin({
-      title: 'React Starter',
       inject: false,
-      mobile: true,
-      minify: {
-        removeComments: true,
-        collapseWhitespace: true,
-        collapseBooleanAttributes: true,
-        removeEmptyAttributes: true,
-        minifyJS: true,
-        minifyCSS: true
-      },
-      template: require('html-webpack-template'),
-      appMountId: 'app',
-      baseHref: '/',
-      googleAnalytics: { trackingId: 'UA-XXXX-XX', pageViewOnLoad: true },
-      meta: [],
-      links: [],
-      window: { env: {} }
+      hash: true,
+      template: './src/index.html',
+      filename: 'index.html'
     })
   ]
 }

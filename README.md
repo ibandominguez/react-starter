@@ -1,6 +1,11 @@
 # react-starter
 
-React boilerplate for web apps.
+A minimal react boilerplate for web apps.
+
+## Styling
+
+This starter uses [Radium](https://github.com/FormidableLabs/radium) for styling
+so not css loaders have been configured yet
 
 ## Getting started
 
